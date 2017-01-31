@@ -56,16 +56,21 @@ var scoresRoundedArray = (scores.map(function(num) {
 }));
 console.log(scoresRoundedArray);
 
-var noDupesArr = [];
+// An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
 
-function removeDupes(arr) {
-for(var i = 0; i < arr.length; i++) {
-    for (var j = 0; j < arr.length; j++) {
-        if (arr[i] !== arr[j]) {
-            noDupesArr.push(arr[i]);
+function isIsogram(str){
+  var strArr = str.toUpperCase().split("");
+  // for (var i =0; i < strArr.length; i++) {
+    var bool = true;
+    strArr.forEach(function(s) {
+        if(strArr.indexOf(s) !== strArr.lastIndexOf(s)){
+            bool = false;
         }
-    }
-}
-}
+    })
 
+        return bool;
+    }
+ 
+
+console.log(isIsogram("noon"));
 
