@@ -54,23 +54,46 @@ var scoresRoundedArray = (scores.map(function(num) {
     return (Math.round(num / 10) * 10)
     
 }));
+
+
+var whatIsMap = scores.map(function(elem, index, arr) {
+    return {"item": elem, "index": index, "arr": arr};
+});
+console.log(whatIsMap); 
 console.log(scoresRoundedArray);
+
+whatIsMap.forEach(function(m) {
+    for (var key in m) {
+        console.log(`The key is ${key} and the value is ${m[key]}`)
+    }
+})
 
 // An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
 
 function isIsogram(str){
   var strArr = str.toUpperCase().split("");
-  // for (var i =0; i < strArr.length; i++) {
     var bool = true;
     strArr.forEach(function(s) {
         if(strArr.indexOf(s) !== strArr.lastIndexOf(s)){
             bool = false;
         }
     })
-
         return bool;
     }
  
 
 console.log(isIsogram("noon"));
+
+// Given two arrays a and b write a function comp(a, b) (compSame(a, b) in Clojure) that checks whether the two arrays have the "same" elements, with the same multiplicities. "Same" means, here, that the elements in b are the elements in a squared, regardless of the order
+
+var a = [121, 144, 19, 161, 19, 144, 19, 11] 
+var b = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19]
+
+function comp(array1, array2){
+var a1OrderSquares = array1.sort(function(a, b) {return a - b}).map(function(elem) {return(elem * elem)});
+var a2Order = array2.sort(function(a, b) {return a - b});
+return a2Order.toString() == a1OrderSquares.toString();
+}
+
+console.log(comp(a, b));
 
