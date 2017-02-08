@@ -97,3 +97,16 @@ return a2Order.toString() == a1OrderSquares.toString();
 
 console.log(comp(a, b));
 
+
+var capitals = function (word) {
+word = word.split("").map(function(elem, index) {
+   if (elem === elem.toUpperCase()) {
+    return index;
+   }
+ }).filter(function(elem) {return elem!== undefined});
+return word;
+}
+  
+  
+console.log(capitals("CodEWaRs"));
+
